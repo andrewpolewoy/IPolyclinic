@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 @Configuration
 @EnableWebSecurity
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yaml")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    @Autowired
