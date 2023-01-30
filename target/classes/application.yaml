@@ -1,0 +1,77 @@
+#server:
+#  port: 8080
+#  contextPath: /polyclinic
+spring:
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/polyclinic'
+#    url: 'jdbc:postgresql://localhost:5432/polyclinic'
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: polyclinic
+        generate-ddl: true
+        ddl-auto: create
+        show_sql: true
+#    open-in-view: true
+  mvc:
+    hiddenmethod:
+    filter:
+      enabled: true
+    view:
+      #        prefix: /WEB-INF/views/
+      prefix: /views/
+      suffix: .jsp
+
+#  jdbc:
+#    initialize-schema: always
+#    table-name: SPRING_SESSION
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: d589da02ede11939de6c
+            client-secret: a812d1bb6b772acb4e9a0194b0efafd85aaa5290
+            callback-url: 'http://localhost:8080/polyclinic/login/github/callback'
+            scopes: 'read:user,user:email'
+
+
+#server:
+#  port: 8088
+##  contextPath: /polyclinic
+#spring:
+#   datasource:
+##      url: 'jdbc:postgresql://db:5432/polyclinic'
+#      url: 'jdbc:postgresql://localhost:5432/polyclinic'
+#      driver-class-name: org.postgresql.Driver
+#      username: postgres
+#      password: postgres
+#   jpa:
+#     properties:
+#        hibernate:
+#          dialect: org.hibernate.dialect.PostgreSQLDialect
+#          default_schema: polyclinic
+#          generate-ddl: true
+#          ddl-auto: create
+#     open-in-view: true
+#   mvc:
+#      hiddenmethod:
+#      filter:
+#        enabled: true
+#      view:
+##        prefix: /WEB-INF/views/
+#        prefix: /views/
+#        suffix: .jsp
+#   security:
+#      oauth2:
+#        client:
+#          registration:
+#            github:
+#              client-id: d589da02ede11939de6c
+#              client-secret: a812d1bb6b772acb4e9a0194b0efafd85aaa5290
+#              callback-url: 'http://localhost:8080/polyclinic/login/github/callback'
+#              scopes: 'read:user,user:email'

@@ -19,11 +19,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.*;
 
-
-
-
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserService implements IUserService, UserDetailsService {
@@ -171,9 +171,9 @@ public class UserService implements IUserService, UserDetailsService {
     public User registerUser(String eMail, String password, String tel) {
         User user = new User();
         Set<Role> roles = new HashSet<>();
-//        roles.add(Role.ADMIN);
+        roles.add(Role.ADMIN);
 //        roles.add(Role.DOCTOR);
-        roles.add(Role.PATIENT);
+//        roles.add(Role.PATIENT);
         user.setRoles(roles);
         user.seteMail(eMail);
         user.setPhoneNumber(tel);
