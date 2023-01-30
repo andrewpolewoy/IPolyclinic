@@ -23,17 +23,26 @@
 #ENTRYPOINT ["java","-jar","/app.jar"]
 
 #FROM tomcat:8.5-alpine
-#VOLUME /tmp
-#ARG WAR_FILE=target/*.war
-#ADD ${WAR_FILE} /usr/local/tomcat/webapps/app.war
-#RUN sh -c 'touch /usr/local/tomcat/webapps/app.war'
-#ENTRYPOINT [ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /usr/local/tomcat/webapps/app.war" ]
+FROM tomcat:8.5-jdk11-openjdk-slim
+
+VOLUME /tmp
+ARG WAR_FILE=target/*.war
+ADD ${WAR_FILE} /usr/local/tomcat/webapps/app.war
+RUN sh -c 'touch /usr/local/tomcat/webapps/app.war'
+ENTRYPOINT [ "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /usr/local/tomcat/webapps/app.war" ]
 #
+
+
+
+
 #FROM tomcat:8.5-jdk11-openjdk-slim
 #ADD target/PolyclinicMain.war /usr/local/tomcat/webapps/
 ##ADD target/PolyclinicProject-1.0.war /usr/local/tomcat/webapps/
 #EXPOSE 8080
 #CMD ["catalina.sh", "run"]
+
+
+
 #---------------
 #FROM adoptopenjdk/openjdk11:alpine-jre
 #ARG JAR_FILE=target/*.jar
@@ -43,13 +52,13 @@
 #-----------------
 
 #  ----------------------------------rajeshsgr--------------------------------------
-FROM adoptopenjdk/openjdk11:alpine-jre
-VOLUME /tmp
-EXPOSE 8080
-RUN mkdir -p /app/
-RUN mkdir -p /app/logs/
-ADD target/PolyclinicMain.jar /app/app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=container", "-jar", "/app/app.jar"]
+#FROM adoptopenjdk/openjdk11:alpine-jre
+#VOLUME /tmp
+#EXPOSE 8080
+#RUN mkdir -p /app/
+#RUN mkdir -p /app/logs/
+#ADD target/PolyclinicMain.jar /app/app.jar
+#ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-Dspring.profiles.active=container", "-jar", "/app/app.jar"]
 #  ----------------------------------rajeshsgr--------------------------------------
 
 
